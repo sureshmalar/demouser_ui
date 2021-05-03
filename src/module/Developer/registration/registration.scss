@@ -1,0 +1,134 @@
+@mixin commonFontClass(
+  $textAlign,
+  $fontSize,
+  $letterSpacing,
+  $color,
+  $opacity,
+  $fontFamily
+) {
+  text-align: $textAlign;
+  font-size: $fontSize;
+  letter-spacing: $letterSpacing;
+  color: $color;
+  opacity: $opacity;
+  font-family: $fontFamily;
+}
+.gridWidthFull {
+  width: 100%;
+}
+.sideImage {
+  overflow: hidden;
+  position: relative;
+  height: auto;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+.paddingZero {
+  padding: 0rem !important;
+}
+.w-15 {
+  width: 15%;
+}
+.blueLink {
+  @include commonFontClass(right, 16px, 0px, #325ce6, 1, normal);
+  cursor: pointer;
+}
+.labelClass {
+  @include commonFontClass(left, 16px, 0px, #040404, 1, normal);
+  line-height: 20px;
+  font-weight: 600;
+}
+.txtClass {
+  font-family: normal;
+}
+.inputfieldClass {
+  @include commonFontClass(left, 16px, 0px, #000, 1, normal);
+  line-height: 20px;
+  border: 1px solid #737475 !important;
+  border-radius: 8px !important;
+  background-color: #ffffff !important;
+  width: 100% !important;
+}
+.inputfieldClass:focus {
+  box-shadow: none !important;
+  background-color: #ffffff !important;
+}
+.loginbtn .p-button {
+  @include commonFontClass(center, 16px, 0px, #f5f5fc, 1, normal);
+  background-color: #006116;
+  border: 1px solid #006116;
+  border-radius: 10px;
+  box-shadow: none !important;
+  padding: 0.4rem 1rem !important;
+  width: 100% !important;
+}
+.loginbtn .p-button:enabled:hover {
+  color: #f5f5fc !important;
+  background-color: #006116;
+  border: 1px solid #006116;
+}
+::placeholder {
+  @include commonFontClass(left, 16px, 0px, #273444, 0.6 !important, normal);
+  font-weight: normal;
+}
+.login {
+  background-color: #fff;
+  height: 100% !important;
+}
+.login .p-placeholder {
+  @include commonFontClass(
+    left,
+    16px !important,
+    0px,
+    #273444 !important,
+    0.6,
+    normal
+  );
+  font-weight: normal;
+}
+.inputfieldClass > .pi-eye-slash {
+  top: 60% !important;
+  margin-top: 0rem !important;
+}
+.p-input-icon-right > i {
+  top: 60% !important;
+  margin-top: 0rem !important;
+}
+.cardClass {
+  margin-top: 1%;
+  border: 1px solid #fde4bf;
+  border-radius: 15px;
+  background-color: #fde4bf;
+}
+@media only screen and (max-width: 768px) {
+  .displayNoneRes {
+    display: none;
+  }
+  .paddingLeftRes {
+    padding-left: 15px !important;
+  }
+}
+
+::v-deep.uploadLogoBtn > .p-fileupload > .p-button {
+  width: 100% !important;
+  background-color: #ffffff;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 8px;
+  font-weight: 600;
+}
+::v-deep.uploadLogoBtn > .p-fileupload-choose:not(.p-disabled):hover {
+  width: 100% !important;
+  background-color: #ffffff !important;
+  color: #0052cc !important;
+  border: 1px solid #0052cc !important;
+  border-radius: 8px;
+  box-shadow: none !important;
+}
+
+::v-deep.uploadLogoBtn > .p-button-icon {
+  font-size: 13px;
+  display: none !important;
+}

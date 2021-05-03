@@ -1,0 +1,179 @@
+<div class="container-fluid login gridWidthFull px-0 pt-4">
+  <div class="p-grid gridWidthFull">
+    <div class="p-md-offset-4 p-lg-offset-4 p-lg-4 p-md-4 p-col-12 cardClass">
+      <div class="p-grid my-1">
+        <div class="p-lg-12 p-md-12 p-col-12">
+          <div class="formField mt-2">
+            <div class="p-field">
+              <label for="firstName" class="labelClass">FIRST NAME</label>
+              <InputText
+                type="text"
+                class="inputfieldClass"
+                v-model="developers.first_name"
+                name="First Name"
+                v-validate="'required'"
+                :class="{ 'is-invalid': submitted && errors.has('First Name') }"
+              />
+              <div
+                v-if="submitted && errors.has('First Name')"
+                class="invalid-feedback"
+              >
+                {{ errors.first('First Name') }}
+              </div>
+            </div>
+
+            <div class="p-field">
+              <label for="lastName" class="labelClass">LAST NAME</label>
+              <InputText
+                type="text"
+                class="inputfieldClass"
+                v-model="developers.last_name"
+                name="Last Name"
+                v-validate="'required'"
+                :class="{ 'is-invalid': submitted && errors.has('Last Name') }"
+              />
+              <div
+                v-if="submitted && errors.has('Last Name')"
+                class="invalid-feedback"
+              >
+                {{ errors.first('Last Name') }}
+              </div>
+            </div>
+
+            <div class="p-field">
+              <label for="email" class="labelClass">EMAIL</label>
+              <InputText
+                type="email"
+                class="inputfieldClass"
+                v-model="developers.email"
+                name="Email Id"
+                v-validate="'required|email'"
+                :class="{ 'is-invalid': submitted && errors.has('Email Id') }"
+              />
+              <div
+                v-if="submitted && errors.has('Email Id')"
+                class="invalid-feedback"
+              >
+                {{ errors.first('Email Id') }}
+              </div>
+            </div>
+            <div class="p-field">
+              <div class="gridWidth gridWidthFull p-input-icon-right">
+                <label for="password" class="labelClass">PASSWORD</label>
+                <InputText
+                  :type="createPasswordSwitch"
+                  class="inputfieldClass"
+                  v-model="developers.password"
+                  name="Password"
+                  v-validate="'required'"
+                  :class="{ 'is-invalid': submitted && errors.has('Password') }"
+                />
+                <i
+                  class="pi pi-eye-slash"
+                  v-if="createPasswordSwitch == 'password'"
+                  @click="switchPasswordType()"
+                />
+                <i
+                  class="pi pi-eye"
+                  v-if="createPasswordSwitch == 'text'"
+                  @click="switchPasswordType()"
+                />
+              </div>
+              <div
+                v-if="submitted && errors.has('Password')"
+                class="invalid-feedback"
+              >
+                {{ errors.first('Password') }}
+              </div>
+            </div>
+
+            <div class="p-field">
+              <label for="phoneNo" class="labelClass">PHONE NUMBER</label>
+              <InputText
+                type="text"
+                class="inputfieldClass"
+                v-model="developers.phone_number"
+                name="Phone Number"
+                maxlength="10"
+                v-numbersOnly
+                v-validate="'required'"
+                :class="{ 'is-invalid': submitted && errors.has('Phone Number') }"
+              />
+              <div
+                v-if="submitted && errors.has('Phone Number')"
+                class="invalid-feedback"
+              >
+                {{ errors.first('Phone Number') }}
+              </div>
+            </div>
+            <div class="p-field">
+              <label for="address" class="labelClass">ADDRESS</label>
+              <textarea
+                type="text"
+                class="inputfieldClass"
+                rows="5"
+                cols="30"
+                v-model="developers.address"
+                name="Address"
+                v-validate="'required'"
+                :class="{ 'is-invalid': submitted && errors.has('Address') }"
+              />
+              <div
+                v-if="submitted && errors.has('Address')"
+                class="invalid-feedback"
+              >
+                {{ errors.first('Address') }}
+              </div>
+            </div>
+            <div class="p-grid my-3">
+              <div class="p-lg-6 p-md-6">
+                <label class="labelClass pt-2">IMAGE</label>
+              </div>
+              <div class="p-lg-6 p-md-6 paddingXYFpoint uploadLogoBtn">
+                <FileUpload
+                  mode="basic"
+                  accept="image/*"
+                  :maxFileSize="1000000"
+                  @select="onUpload($event)"
+                  :auto="true"
+                  chooseLabel="Choose Image..."
+                />
+                <input
+                  hidden
+                  v-model="developers.image_name"
+                  v-validate="'required'"
+                  name="Profile Pic"
+                />
+                <div
+                  v-if="submitted && errors.has('Profile Pic')"
+                  class="invalid-feedback"
+                >
+                  Kindly Upload Profile Pic
+                </div>
+              </div>
+              <div class="p-lg-12 p-md-12 py-0 pl-2">
+                <span class="txtClass">formats: PNG, JPG, up to 1MB.</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="loginbtn my-4">
+            <Button type="button" label="REGISTER" @click="registerDeveloper()"/>            
+          </div>
+          <div class="outLineJoinBtn mb-4">
+            <span
+              class="cursor linkClass"
+              style="float: right;"
+              @click="$router.push('/login')"
+            >
+              <a>Back to Login</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p-lg-4 p-md-4"></div>
+  </div>
+  <br />
+  <br />
+</div>

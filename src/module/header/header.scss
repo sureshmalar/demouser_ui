@@ -1,0 +1,64 @@
+@mixin commonFontClass(
+  $textAlign,
+  $fontSize,
+  $letterSpacing,
+  $color,
+  $opacity
+) {
+  text-align: $textAlign;
+  font-size: $fontSize;
+  letter-spacing: $letterSpacing;
+  color: $color;
+  opacity: $opacity;
+}
+.navMenuClass {
+  background: transparent !important;
+  border: none !important;
+  padding: 0rem;
+  float: right;
+}
+.paddingAlignClass {
+  padding-top: 0.8rem !important;
+}
+.menuClass {
+  margin-top: 1rem !important;
+  @include commonFontClass(left, 16px, 0px, #273444, 0.7);
+  cursor: pointer;
+  text-align: center;
+}
+.activeMenuClass {
+  color: #d7433a !important;
+  border-bottom: 3px solid #d7433a !important;
+}
+.disInline {
+  display: inline-block;
+}
+.navClass ul {
+  float: right;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #fff;
+}
+.navClass li {
+  float: left;
+}
+.navClass li a {
+  display: block;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  @include commonFontClass(left, 16px, 0px, #273444, 0.7);
+  cursor: pointer;
+}
+.homenav li a {
+  padding: 14px 20px;
+}
+.navClass li a:hover:not(.active) {
+  background-color: #fff;
+  text-decoration: none;
+}
+.header {
+  background-color: #00365d !important;
+}

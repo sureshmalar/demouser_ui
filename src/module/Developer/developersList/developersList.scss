@@ -1,0 +1,190 @@
+@mixin commonFontClass(
+  $textAlign,
+  $fontSize,
+  $letterSpacing,
+  $color,
+  $opacity,
+  $fontFamily
+) {
+  text-align: $textAlign;
+  font-size: $fontSize;
+  letter-spacing: $letterSpacing;
+  color: $color;
+  opacity: $opacity;
+  font-family: $fontFamily;
+}
+.gridWidthFull {
+  width: 100%;
+}
+.sideImage {
+  overflow: hidden;
+  position: relative;
+  height: auto;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+.paddingZero {
+  padding: 0rem !important;
+}
+.w-15 {
+  width: 15%;
+}
+.blueLink {
+  @include commonFontClass(right, 16px, 0px, #325ce6, 1, normal);
+  cursor: pointer;
+}
+.labelClass {
+  @include commonFontClass(left, 16px, 0px, #0052cc, 1, normal);
+  line-height: 20px;
+}
+.txtClass {
+  font-family: normal;
+}
+.inputfieldClass {
+  @include commonFontClass(left, 16px, 0px, #273444, 1, normal);
+  line-height: 20px;
+  border: 1px solid #737475 !important;
+  border-radius: 8px !important;
+  background-color: #ffffff !important;
+  width: 100% !important;
+}
+.inputfieldClass:focus {
+  box-shadow: none !important;
+  background-color: #ffffff !important;
+}
+.loginbtn .p-button {
+  @include commonFontClass(center, 16px, 0px, #f5f5fc, 1, normal);
+  background-color: #0052cc;
+  border: 1px solid #0052cc;
+  border-radius: 10px;
+  box-shadow: none !important;
+  padding: 0.4rem 1rem !important;
+  width: 100% !important;
+}
+.loginbtn .p-button:enabled:hover {
+  color: #f5f5fc !important;
+  background-color: #0052cc !important;
+  border: 1px solid #0052cc;
+}
+::placeholder {
+  @include commonFontClass(left, 16px, 0px, #273444, 0.6 !important, normal);
+  font-weight: normal;
+}
+.login {
+  background-color: #f1f6fa;
+  height: 100% !important;
+}
+.login .p-placeholder {
+  @include commonFontClass(
+    left,
+    16px !important,
+    0px,
+    #273444 !important,
+    0.6,
+    normal
+  );
+  font-weight: normal;
+}
+.inputfieldClass > .pi-eye-slash {
+  top: 60% !important;
+  margin-top: 0rem !important;
+}
+.p-input-icon-right > i {
+  top: 60% !important;
+  margin-top: 0rem !important;
+}
+.cardClass {
+  margin-top: 8%;
+  border: 1px solid white;
+  border-radius: 15px;
+  background-color: white;
+}
+@media only screen and (max-width: 768px) {
+  .displayNoneRes {
+    display: none;
+  }
+  .paddingLeftRes {
+    padding-left: 15px !important;
+  }
+}
+::v-deep(.p-paginator) {
+  .p-paginator-current {
+    margin-left: auto;
+  }
+}
+.table-header {
+  display: flex;
+  justify-content: space-between;
+}
+::v-deep(.p-datatable.p-datatable-customers) {
+  .p-datatable-header {
+    padding: 1rem;
+    text-align: left;
+    font-size: 1.5rem;
+  }
+  .p-paginator {
+    padding: 1rem;
+  }
+
+  .p-datatable-thead > tr > th {
+    text-align: left;
+  }
+
+  .p-datatable-tbody > tr > td {
+    cursor: auto;
+  }
+
+  .p-dropdown-label:not(.p-placeholder) {
+    text-transform: uppercase;
+  }
+}
+.p-datatable .p-datatable-thead > tr > th {
+  color: #ffffff i !important;
+  background: #00365d i !important;
+}
+::v-deep.p-datatable .p-datatable-tbody > tr.p-highlight {
+  color: #000000 !important;
+  background: #e3f2fd !important;
+}
+/* Responsive */
+.p-datatable-customers .p-datatable-tbody > tr > td .p-column-title {
+  display: none;
+}
+@media screen and (max-width: 960px) {
+  ::v-deep(.p-datatable) {
+    &.p-datatable-customers {
+      .p-datatable-thead > tr > th,
+      .p-datatable-tfoot > tr > td {
+        display: none !important;
+      }
+
+      .p-datatable-tbody > tr {
+        border-bottom: 1px solid var(--layer-2);
+
+        > td {
+          text-align: left;
+          display: block;
+          border: 0 none !important;
+          width: 100% !important;
+          float: left;
+          clear: left;
+          border: 0 none;
+
+          .p-column-title {
+            padding: 0.4rem;
+            min-width: 30%;
+            display: inline-block;
+            margin: -0.4rem 1rem -0.4rem -0.4rem;
+            font-weight: bold;
+          }
+
+          .p-progressbar {
+            margin-top: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}

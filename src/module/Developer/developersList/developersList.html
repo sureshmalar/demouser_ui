@@ -1,0 +1,119 @@
+<div class="container-fluid login gridWidthFull px-0">
+  <div class="gridWidthFull">
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link cursor-pointer" @click="home()">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link cursor-pointer" @click="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+  <div class="p-grid gridWidthFull">
+    <div class="p-md-offset-1 p-lg-offset-1 p-lg-10 p-md-10 p-col-12">
+      <div class="p-grid my-4">
+        <span class="txtClass">
+          <h4><b>DEVELOPERS DETAILS</b></h4>
+        </span>
+      </div>
+      <div class="p-grid my-4" v-if="selectedData.length >= 2">
+        <div class="pull-right ml-auto">
+          <Button
+            type="button"
+            label="Delete Selected Row"
+            @click="deleteMultiple()"
+          />
+        </div>
+      </div>
+      <div class="p-grid my-4">
+        <div class="p-col-12">
+          <DataTable
+            ref="dt"
+            :value="developers"
+            :lazy="true"
+            :selection.sync="selectedData"
+            :paginator="true"
+            class="p-datatable-customers"
+            :rows="10"
+            dataKey="id"
+            :rowHover="true"
+            :totalRecords="developers.length"
+          >
+            <Column
+              selectionMode="multiple"
+              headerStyle="width: 3rem"
+              :exportable="false"
+            ></Column>
+            <Column header="Name" :sortable="true">
+              <template #body="slotProps">
+                <span
+                  v-if="slotProps.data.first_name != undefined && slotProps.data.first_name != null"
+                >
+                  {{slotProps.data.first_name}}
+                </span>
+              </template>
+            </Column>
+            <Column header="Email" :sortable="true">
+              <template #body="slotProps">
+                <span
+                  v-if="slotProps.data.email != undefined && slotProps.data.email != null"
+                >
+                  {{slotProps.data.email}}
+                </span>
+              </template>
+            </Column>
+            <Column header="Phone" :sortable="true">
+              <template #body="slotProps">
+                <span
+                  v-if="slotProps.data.phone_number != undefined && slotProps.data.phone_number != null"
+                >
+                  {{slotProps.data.phone_number}}
+                </span>
+              </template>
+            </Column>
+            <Column header="Address" :sortable="true">
+              <template #body="slotProps">
+                <span
+                  v-if="slotProps.data.address != undefined && slotProps.data.address != null"
+                >
+                  {{slotProps.data.address}}
+                </span>
+              </template>
+            </Column>
+            <Column header="Image" :sortable="true">
+              <template #body="slotProps">
+                <span
+                  v-if="slotProps.data.profile_pic != undefined && slotProps.data.profile_pic != null"
+                >
+                <img :src="fileBaseURL+slotProps.data.profile_pic" style="width: 50%;">
+                </span>
+                <span
+                  v-if="slotProps.data.profile_pic == ''"
+                >
+                  No Image
+                </span>
+              </template>
+            </Column>
+            <Column header="Action">
+              <template #body="slotProps">
+                <span>
+                  <i
+                    class="pi pi-pencil cursor"
+                    @click="editDeveloper(slotProps.data.id)"
+                  ></i>
+                </span>
+                <span class="pl-4 cursor">
+                  <i
+                    class="pi pi-trash"
+                    @click="deleteDeveloper(slotProps.data.id)"
+                  ></i>
+                </span>
+              </template>
+            </Column>
+          </DataTable>
+        </div>
+      </div>
+    </div>
+    <div class="p-lg-1 p-md-1"></div>
+  </div>
+</div>
